@@ -1,0 +1,39 @@
+ul.menu,
+ul.*{margin:0px;padding:0px;}
+ul.menu ul {padding:0;margin:0;list-style:none;position:relative;background:#ddd;font-family:arial, sans-serif;}
+ul.menu {z-index:100;padding:10px;border-radius:10px 10px 0 0;margin:0 auto;}
+ul.menu ul {z-index:50;border-radius:0 0 10px 10px;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-ms-transition: 0.5s;
+	-o-transition: 0.5s;
+	transition: 0.5s;
+}
+ul.menu li {line-height:30px;position:relative;text-indent:10px;list-style-type:none;}
+ul.menu > li {margin-top:2px;font-size:12px;}
+ul.menu > li a {font:normal 12px/30px arial, sans-serif;color:#fff;text-decoration:none;}
+ul.menu label.open {display:block;background: #DEEEF1 url("/jscss/demoimg/201208/d-arrow.gif") no-repeat 170px 12px;line-height:30px;position:relative;z-index:100;font:normal 12px/30px arial, sans-serif;color:#000;font-weight:900;;border-radius:10px 10px 0 0;}
+ul.menu label.open b {color:#DEEEF1;}
+ul.menu span {display:block;background:#00c;line-height:30px;position:relative;z-index:100;border-radius:10px 10px 0 0;}
+ul.menu label img {position:absolute;left:0;top:0;width:100%;height:30px;}
+
+ul.menu ul li {margin-top:-30px;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-ms-transition: 0.5s;
+	-o-transition: 0.5s;
+	transition: 0.5s;
+}
+ul.menu ul li a {display:block;font:normal 11px/30px arial, sans-serif;color:#000;background:#ccc;}
+ul.menu ul li a:hover {background:#ddd;}
+ul.menu input {position:absolute;left:-9999px;}
+
+ul.menu li input:checked + label {background:#069;}
+ul.menu li input:checked ~ ul {background:#ccc;padding-bottom:10px;}
+ul.menu li input:checked ~ ul li {margin-top:0;}
+
+ul.menu label.close {display:block;height:30px;background:transparent url("/jscss/demoimg/201208/u-arrow.gif") no-repeat 170px 12px;line-height:30px;position:relative;left:0;z-index:90;margin-top:-30px} 
+ul.menu input.tabs:checked ~ label.close {display:block;z-index:200;}
+ul.menu input.close:checked + label.close {display:none;}
+ul.menu input.close:checked ~ ul {background:#ddd;padding-bottom:0;}
+ul.menu input.close:checked ~ ul li {margin-top:-30px;}

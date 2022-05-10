@@ -1,0 +1,230 @@
+<html><head>
+<title>HTML美化</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<link href="../css/style.css" type="text/css" rel="stylesheet">
+<script language="Javascript" src="../js/misc.js"></script>
+<script language="Javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+var sum = 13;
+
+var currentPage = 1; /*当前是第几页*/
+var showTableTr  = 10; /*每页显示多少行*/
+
+/*新增行*/
+function addTr()
+{
+	sum++;
+	/*显示隐藏的行*/
+	$('tr[name="hidetr"]:last').find("th").eq(0).text($("#tableList tr").length -2);
+	$('tr[name="hidetr"]:last').show();
+	
+	/*复制最后一行，添加到最后一行后面，然后隐藏*/
+	$('tr[name="hidetr"]:last').after($('tr[name="hidetr"]:last').clone(true));
+	$('tr[name="hidetr"]:last').hide();
+	
+	if("BGCgray" == $('tr[name="hidetr"]:last').attr('class'))
+	{
+			$('tr[name="hidetr"]:last').removeClass('BGCgray');
+	}
+	else 
+	{
+		$('tr[name="hidetr"]:last').addClass('BGCgray');	
+	}
+	
+	if(currentPage != parseInt(getSumPage()))
+	{	
+		tabPaging(parseInt(getSumPage()));
+	}
+}
+/*删除行*/
+function delTr(node) {   
+    var tr1 = node.parentNode.parentNode;  
+    var index = tr1.rowIndex;
+		var tab = document.getElementById("tableList");
+
+		tab.deleteRow(index);
+
+		/*序号重排*/
+		for(i = index; i < tab.rows.length - 2; i++)
+		{
+			tab.rows[i].cells[0].innerHTML = i.toString();	
+		}
+		
+		tabPaging(currentPage);
+}  
+
+/*分页*/
+function tabPaging(page)
+{	
+	currentPage = page;
+	for(i = 1; i < getTabTrLength("tableList") + 1; i++)
+	{
+		$("#tableList tr").eq(i).hide();	
+	}
+	
+	var end = (page*showTableTr) > getTabTrLength("tableList")? getTabTrLength("tableList") : page*showTableTr;
+	for(i = (page - 1)*showTableTr + 1; i < (end + 1); i++)
+	{
+		$("#tableList tr").eq(i).show();	
+	}
+}
+
+function getTabTrLength(tname)
+{
+		return $("#" + tname + " tr").length - 3;
+}
+/*上一页*/
+function prePage()
+{
+	if(1 == currentPage)
+	{
+		currentPage =parseInt(getSumPage());
+	}
+	else 
+	{
+		--currentPage;	
+	}
+	tabPaging(currentPage);
+}
+/*下一页*/
+function nextPage()
+{
+	if(parseInt(getSumPage()) == currentPage)
+	{
+		currentPage = 1;
+	}
+	else 
+	{
+		++currentPage;	
+	}
+	tabPaging(currentPage);
+}
+
+/*总共可以分几页*/
+function getSumPage() {
+	sumtr = getTabTrLength("tableList");
+	return (sumtr/showTableTr + (sumtr%showTableTr == 0 ? 0 : 1)); 
+}
+
+function setKey(_key,val)
+{
+	localStorage.setItem(_key,val);
+}
+function getKey (_key) {
+	return localStorage.getItem(_key);
+}
+
+/*  提交*/
+function submitChange()
+{
+	/*保存当前页*/
+	setKey("currentPage",currentPage);
+}
+
+/*初始化数据*/
+function htmlload()
+{
+	if(window.localStorage)
+	{
+		var a = null;
+		if(getKey("currentPage") == a)
+		{
+			currentPage = 1;	
+		}
+		else 
+		{
+			currentPage = getKey("currentPage");
+		}
+	}
+	else 
+	{
+		alert('该浏览器不支持html5,请使用Google,Firfox等浏览器');
+	}
+	$('tr[name="hidetr"]:last').hide();	
+	
+	tabPaging(currentPage);
+}
+
+</script>
+</head>
+
+<body onload=htmlload()>
+<form method="post" name="genForm" action="/goform/goform_SysConf">
+
+<div style="overflow:auto;height:100%; width:100%">
+<!--表头 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table1">
+	<tr>
+		<td width="10" height="30"><img src="../images/main_headerL.gif" width="20" height="30">
+		</td>
+    <td  style="height:25px; background-image:url(../images/main_header.gif); font-weight:bold;" >
+    <font color=#ffffff>
+    &nbsp;&nbsp;&nbsp;&nbsp;当前位置：
+    <img src="../images/arrow.gif" align="absmiddle">&nbsp;&nbsp;后台账户管理1
+    </font>
+    </td>
+    <td  style="height:25px; background-image:url(../images/main_header.gif); font-weight:bold;align:center;" align="right" >
+    	<a href="JavaScript:void(0)" onClick="prePage()" class="barBtn"><img src="../images/btn_left.gif" align="absmiddle"> 上一页</a>
+		  <a href="JavaScript:void(0)" onClick="nextPage()" class="barBtn"><img src="../images/btn_right.gif" align="absmiddle"> 下一页</a>
+		  <a href="JavaScript:void(0)" onClick="addTr()" class="barBtn"><img src="../images/5.png" align="absmiddle"> 新增</a>
+    	<a href="JavaScript:void(0)" onClick="submitChange()" class="barBtn"><img src="../images/8.png"  align="absmiddle"> 设置</a>
+		  <a href="JavaScript:void(0)" onClick="location.reload()" class="barBtn"><img src="../images/btn_refresh.gif" align="absmiddle"> 刷新</a>
+    	
+    </td>
+     
+  </tr>
+</table>
+<table id=tableList width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+	
+<tr>
+	<th width='8%' class=tHead> 编号 </th>
+	<th width='20%' class=tHead> 姓名 </th>
+	<th width='40%' class=tHead> 性别 </th>
+	<th width='40%' class=tHead> 年龄 </th>
+	<th width='40%' class=tHead> 操作 </th>
+</tr>
+
+<script type="text/javascript">
+	
+for(i = 1; i < (sum + 1);i++)
+{	
+	if(0 == i%2)
+	{
+		document.write("<tr name=hidetr>");
+	}
+	else 
+	{
+		document.write("<tr class=BGCgray name=hidetr>");
+	}
+	
+	document.write("<th>" + i + "</th>");	
+	document.write("<td>QLZF</td>");	
+	
+	document.write("<td>");	
+	document.write("<select name=sex >");
+	document.write("<option value=1>男</option>" );
+	document.write("<option value=2>女</option>" );
+	document.write("</select>");		
+	document.write("</td>");	
+
+	document.write("<td><input name=year type=text value=18></td>");
+	
+	document.write('<th style="white-space:nowrap;"><input  class="button green center"   type="button" name="delDev" value="删除"  onclick="delTr(this)"></th>');
+	document.write("</tr>");	
+}
+
+</script>
+  <th colspan="15"  align="center"> 
+  </th>
+ </tr>
+</table>
+</div>
+
+<br>
+<div >提示：表单美化
+
+</div>
+<br>
+</form>
+</body></html>
+

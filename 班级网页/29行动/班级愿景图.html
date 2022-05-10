@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>2104</title>
+		<style type="text/css">
+			body{
+					overflow-x: hidden;
+			}
+			.header ul {
+				/*图片如何动*/
+				width: 200%;
+				list-style: none;
+				animation-name: move;
+				animation-duration: 60s;
+				/*耗时*/
+
+				animation-iteration-count: infinite;
+				/*无限滚动*/
+
+				animation-timing-function: linear;
+				/*时间函数*/
+			}
+
+			.header ul li {
+
+				float: left;	
+			}
+
+			.header ul li img {
+				/*图片样式*/
+				width: 450px;
+				height: 300px;
+				margin-left: 10px;
+			}
+
+			.header img:hover {
+				/*鼠标悬停图片放大*/
+				transform: scale(1.5);
+				box-shadow: 0 0 10px #8d8d8d;
+				border-radius: 100%;
+			}
+
+			.ne:hover ul{
+				/*鼠标悬浮停止动*/
+				cursor: pointer;
+				animation-play-state: paused;
+			}
+
+			@keyframes move {
+
+				/*设置图片滚动*/
+				from {
+					transform: translateX(0);
+				}
+
+				to {
+					transform: translateX(-3500px);
+				}
+			}
+
+			}
+		
+		</style>
+	</head>
+	<body>
+		<DIV class="column content">
+			<DIV class="header">
+				<div class="ne">
+					<ul>
+						<li> <img src="img/信任人椅，铁甲战车/1.png"></li>
+						<li> <img src="img/信任人椅，铁甲战车/2.jpg"></li>
+						<li> <img src="img/信任人椅，铁甲战车/3.jpg"></li>
+						<li> <img src="img/信任人椅，铁甲战车/4.jpg"></li>
+						<li> <img src="img/信任人椅，铁甲战车/5.jpg"></li>
+						<li> <img src="img/信任人椅，铁甲战车/6.jpg"></li>
+					</ul>
+				</div>
+			</DIV>
+		</DIV>
+	</body>
+</html>

@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>29行动账号存储库</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link rel="StyleSheet" href="css/menu.css" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/cn_menu.js"></script>
+</head>
+<body scroll="no">
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="79" background="images/top_bg.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="500"><img src="images/top_left.gif" width="500" height="79"></td>
+          <td>&nbsp;</td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td height="100%">
+    	<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" style="background-repeat: repeat-x;">
+        <tr>
+          <td width="175" height="100%" valign="top">
+          	<table width="175" height="100%" border="0" cellspacing="0" cellpadding="0" background="images/menu_bg.gif">
+              <tr>
+                <td height="25"><img src="images/menu_top.gif" width="175" height="25"></td>
+              </tr>
+              <tr>
+                <td height="100%" style="background-image:url(images/menu_bgT.gif); background-repeat:no-repeat" valign="top">
+                	<ul id=navmenu class="menu">
+
+									</ul>
+ 
+               </td>
+              </tr>
+              <tr>
+                <td height="31"><img src="images/menu_foot.gif" width="175" height="31"></td>
+              </tr>
+            </table>
+            </td>
+          <td>
+          <iframe src="page/11_page.html" width="100%" height="100%" frameborder="0" scrolling="no" name="page"></iframe></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<script type="text/javascript">
+	try {
+		 	for (i=0; i < menus.length; i++)
+			{
+				$("#navmenu").append('<li id=level' + i + '>');
+				$('#level' + i ).append('<input type="radio" name="tab" id=tab' + i + 'a class="tabs">');
+				$('#level' + i ).append('<label for=tab' + i + 'a class="open" accesskey="2">' + menus[i][0] + '</label>');
+				$('#level' + i ).append('<input type="radio" name="tab" id="tab' + i + 'ac" class="tabs close">');
+				$('#level' + i ).append('<label for=tab' + i + 'ac class="close" accesskey="3"></label>');
+				$('#level' + i ).append('<ul id=second' + i + '>');
+				var submenu=menus[i][2];
+				for (j=0; j < submenu.length; j++)
+				{
+					$('#second' + i).append('<li><a href=' + submenu[j][1] + '?'+ Math.random() +' target=page>' + submenu[j][0] + '</a></li>');	
+				}
+				$('#level' + i ).append('</ul>');
+				$("#navmenu").append('</li>');
+			}
+	} 
+	catch (e) 
+	{
+		alert(e.name  + e.message + "\n"  + "浏览器版本太低请尝试使用Firfox、谷歌浏览器、IE9+ 浏览器预览\n");
+	}
+
+	$('#tab0a').attr("checked", true); 
+</script>
+</body>
+</html>

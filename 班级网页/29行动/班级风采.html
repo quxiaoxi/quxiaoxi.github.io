@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+
+			body {
+				background: url(img/4.jpg);
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				background-size: 100% 100%;
+				overflow-x: hidden;
+			}
+
+			#zhu_ti {
+				width: 2020px;
+				height: 710px;
+				margin: 0px auto;
+				/* background-color: #545454; */
+				
+			}
+
+
+
+			#ding_bu>a>img {
+				margin-top: 25px;
+				margin-left: 50px;
+			}
+
+			#zhu_ti ul {
+				float: left;
+				margin-top: 40px;
+				list-style: none;
+				margin-left: 30px;
+				width: 300px;
+			}
+
+			#zhu_ti>ul li {
+				color: #000000;
+				padding-top: 10px;
+				text-align: center;
+				width: 200px;
+				height: 50px;
+				border-radius: 40px;
+				list-style: none;
+				margin-left: 50px;
+				background: url(img/3.png) no-repeat;
+				background-size: 209px 60px;
+				/* background-color: gold; */
+				font-size: 25px;
+				margin-top: 30px;
+			}
+
+			#zhu_ti>ul li:hover {
+				transform: scale(1.2);
+				color: #aaffff;
+			}
+
+			a {
+				text-decoration: none;
+			}
+
+			#zhu_ti>iframe {
+
+				border: 0px;
+				/* background-color: #AAFFFF; */
+				margin-top: 120px;
+			}
+
+			ll>img {
+				margin-top: 10px;
+				margin-left: 300px;
+				width: 150px;
+				height: 120px;
+			}
+
+			#ding_bu>img {
+				margin-top: 10px;
+				margin-left: 580px;
+				width: 350px;
+				height: 100px;
+			}
+
+			#di_bu {
+				font-family: "华文新魏";
+				font-size: 30px;
+				margin-left: 300px;
+				clear: both;
+				width: 1000px;
+				height: 200px;
+				/* background-color: rgb(210,123,123,0.4); */
+			}
+		</style>
+	</head>
+	<body>
+		<div id="zhu_ti">
+			<div id="ding_bu">
+				<a href="../首页.html">
+					<img src="img/fh.png">
+				</a>
+				<ll> <img src="img/bh.png"></ll>
+				<img src="img/abc.png">
+			</div>
+			<div id="zhu_ti">
+				<ul>
+					<a href="班级愿景图.html" target="bjxx" onclick="n1()" id="r1">
+						<li>信任&战车</li>
+					</a>
+					<a href="疾风三十一.html" target="bjxx" onclick="n2()">
+						<li>疾风三十一</li>
+					</a>
+					<a href="王者友谊赛.html" target="bjxx" onclick="n3()" >
+						<li>王者友谊赛</li>
+					</a>
+					<a href="班级生日会.html" target="bjxx" onclick="n4()">
+						<li>班级生日会</li>
+					</a>
+					<a href="冬至包饺子.html" target="bjxx" onclick="n5()">
+						<li>冬至包饺子</li>
+					</a>
+				</ul>
+				<iframe src="" width="1500px" height="400px" name="bjxx"></iframe>
+				<div id="di_bu">
+					
+				</div>
+			</div>
+
+		</div>
+		<script type="text/javascript">
+			(()=>{
+				// 兼容IE
+			    if(document.all) {
+			        document.getElementById("r1").click();
+			    }
+			    // 兼容其它浏览器
+			    else {
+			        var e = document.createEvent("MouseEvents");
+			        e.initEvent("click", true, true);
+			        document.getElementById("r1").dispatchEvent(e);
+			    }
+			})();
+		</script>
+	</body>
+</html>
